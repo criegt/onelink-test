@@ -4,19 +4,19 @@ namespace OneLinkTest.Domain.Employees
 {
     public class Employee
     {
-        public Employee(EmployeeId employeeId, int document, DocumentType documentType, string firstName, string lastName, Subarea subarea)
+        public Employee(EmployeeId employeeId, long document, DocumentType documentType, string firstName, string lastName, int subareaId)
         {
             EmployeeId = employeeId;
             Document = document;
             DocumentType = documentType;
             FirstName = firstName;
             LastName = lastName;
-            Subarea = subarea;
+            SubareaId = subareaId;
         }
 
         public EmployeeId EmployeeId { get; }
 
-        public int Document { get; }
+        public long Document { get; }
 
         public DocumentType DocumentType { get; }
 
@@ -24,6 +24,6 @@ namespace OneLinkTest.Domain.Employees
 
         public string LastName { get; }
 
-        public Subarea Subarea { get; }
+        public int SubareaId { get; }
     }
 }

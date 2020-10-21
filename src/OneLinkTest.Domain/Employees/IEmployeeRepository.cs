@@ -14,6 +14,8 @@ namespace OneLinkTest.Domain.Employees
 
         Task<Employee> Find(EmployeeId employeeId);
 
+        Task<Employee> Find(long document, DocumentType documentType);
+
         Task<IReadOnlyList<Employee>> GetEmployees(string searchTerms);
 
         Task<IReadOnlyList<Employee>> GetEmployeesWithSubarea(int pageIndex, int pageSize);

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace OneLinkTest.Domain.Employees
 {
@@ -19,5 +19,7 @@ namespace OneLinkTest.Domain.Employees
         public static bool operator !=(EmployeeId left, EmployeeId right) => !(left == right);
 
         public override string ToString() => Id.ToString();
+
+        public static EmployeeId CreateNew() => new EmployeeId(Guid.NewGuid());
     }
 }
