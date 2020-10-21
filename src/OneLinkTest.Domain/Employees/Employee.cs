@@ -25,5 +25,7 @@ namespace OneLinkTest.Domain.Employees
         public string LastName { get; }
 
         public int SubareaId { get; }
+
+        public Subarea? Subarea { get; set; }
     }
 }

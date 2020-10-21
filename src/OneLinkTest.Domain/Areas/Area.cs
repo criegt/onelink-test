@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using OneLinkTest.Domain.Areas.Subareas;
+﻿using OneLinkTest.Domain.Areas.Subareas;
 
 namespace OneLinkTest.Domain.Areas
 {
