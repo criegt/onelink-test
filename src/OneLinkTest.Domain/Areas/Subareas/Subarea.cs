@@ -1,25 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using OneLinkTest.Domain.Employees;
 
 namespace OneLinkTest.Domain.Areas.Subareas
 {
     public class Subarea
     {
-        public Subarea(int subareaId, int areaId, string name)
-        {
-            SubareaId = subareaId;
-            AreaId = areaId;
-            Name = name;
-        }
+        public int SubareaId { get; set; }
 
-        public int SubareaId { get; }
+        public int AreaId { get; set; }
 
-        public int AreaId { get; }
+        public string Name { get; set; }
 
-        public string Name { get; }
+        [JsonIgnore]
+        public Area Area { get; set; }
 
-        public Area? Area { get; set; }
-
-        public List<Employee>? Employees { get; set; }
+        [JsonIgnore]
+        public List<Employee> Employees { get; set; }
     }
 }

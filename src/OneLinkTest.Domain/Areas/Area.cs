@@ -4,16 +4,10 @@ namespace OneLinkTest.Domain.Areas
 {
     public class Area
     {
-        public Area(int areaId, string name)
-        {
-            AreaId = areaId;
-            Name = name;
-        }
+        public int AreaId { get; set; }
 
-        public int AreaId { get; }
+        public string Name { get; set; }
 
-        public string Name { get; }
-
-        public SubareasCollection Subareas { get; } = new SubareasCollection();
+        public SubareasCollection Subareas { get; set; } = new SubareasCollection();
     }
 }

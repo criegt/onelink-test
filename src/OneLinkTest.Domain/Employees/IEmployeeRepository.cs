@@ -11,12 +11,10 @@ namespace OneLinkTest.Domain.Employees
 
         Task Update(Employee employee);
 
-        Task<Employee> Find(EmployeeId employeeId);
+        Task<Employee> Find(long employeeId);
 
         Task<Employee> Find(long document, DocumentType documentType);
 
-        Task<IReadOnlyList<Employee>> GetEmployees(string searchTerms);
-
-        Task<IReadOnlyList<Employee>> GetEmployeesWithSubarea(int pageIndex, int pageSize);
+        Task<IReadOnlyList<Employee>> GetEmployeesWithSubarea(int pageIndex, int pageSize, string searchTerms);
     }
 }
