@@ -8,10 +8,11 @@ namespace OneLinkTest.Infrastructure.DataAccess.Configuration
     {
         public void Configure(EntityTypeBuilder<Subarea> builder)
         {
-            builder.HasKey(b => b.SubareaId);
+            builder.Property(b => b.SubareaId)
+                .ValueGeneratedOnAdd();
             builder.Property(b => b.Name);
             builder.HasMany(x => x.Employees)
-                .WithOne(b => b.Subarea!)
+                .WithOne(b => b.Subarea)
                 .HasForeignKey(b => b.SubareaId);
         }
     }

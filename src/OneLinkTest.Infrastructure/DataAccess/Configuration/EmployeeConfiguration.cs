@@ -14,17 +14,13 @@ namespace OneLinkTest.Infrastructure.DataAccess.Configuration
             }
 
             builder.Property(b => b.EmployeeId)
-                .HasConversion(
-                    v => v.Id,
-                    v => new EmployeeId(v))
-                .IsRequired();
-
+                .ValueGeneratedOnAdd();
             builder.Property(b => b.Document);
             builder.Property(b => b.DocumentType);
             builder.Property(b => b.FirstName);
             builder.Property(b => b.LastName);
 
-            builder.HasOne(b => b.Subarea!)
+            builder.HasOne(b => b.Subarea)
                 .WithMany(b => b.Employees);
         }
     }

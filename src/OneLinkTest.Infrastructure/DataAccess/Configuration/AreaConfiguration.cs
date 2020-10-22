@@ -8,7 +8,8 @@ namespace OneLinkTest.Infrastructure.DataAccess.Configuration
     {
         public void Configure(EntityTypeBuilder<Area> builder)
         {
-            builder.HasKey(b => b.AreaId);
+            builder.Property(b => b.AreaId)
+                .ValueGeneratedOnAdd();
             builder.Property(b => b.Name);
             builder.HasMany(b => b.Subareas)
                 .WithOne(b => b.Area!)

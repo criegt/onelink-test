@@ -7,9 +7,7 @@ namespace OneLinkTest.Infrastructure.DataAccess
 {
     public class OneLinkTestContext : DbContext
     {
-#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         public OneLinkTestContext(DbContextOptions options) : base(options)
-#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         {
         }
 
