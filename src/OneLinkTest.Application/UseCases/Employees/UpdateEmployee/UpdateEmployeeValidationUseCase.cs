@@ -32,14 +32,6 @@ namespace OneLinkTest.Application.UseCases.Employees.UpdateEmployee
 
         public async Task Execute(Input input)
         {
-            var employee = await _employeeRepository.Find(input.Document, input.DocumentType);
-
-            if (employee is null)
-            {
-                _outputPort.NotFound();
-                return;
-            }
-
             var result = _validator.Validate(input);
 
             if (!result.IsValid)

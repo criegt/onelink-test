@@ -18,14 +18,21 @@ namespace OneLinkTest.Application.UseCases.Employees.UpdateEmployee
 
         public async Task Execute(Input input)
         {
-            var employee = new Employee(EmployeeId.CreateNew(),
-                input.Document,
-                input.DocumentType,
-                input.FirstName,
-                input.LastName,
-                input.SubareaId);
+            var employee = await _employeeRepository.Find(input.EmployeeId);
 
-            await _employeeRepository.Add(employee);
+            if (employee is null)
+            {
+                _outputPort.NotFound();
+                return;
+            }
+
+            employee.Document = input.Document;
+            employee.DocumentType = input.DocumentType;
+            employee.FirstName = input.FirstName;
+            employee.LastName = input.LastName;
+            employee.SubareaId = input.SubareaId;
+
+            await _employeeRepository.Update(employee);
 
             _outputPort.Ok(employee);
         }

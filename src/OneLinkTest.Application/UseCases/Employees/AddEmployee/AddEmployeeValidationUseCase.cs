@@ -44,8 +44,8 @@ namespace OneLinkTest.Application.UseCases.Employees.AddEmployee
 
             if (!result.IsValid)
             {
-                _outputPort.Invalid();
                 _notification.AddValidationResult(result);
+                _outputPort.Invalid();
                 return;
             }
 

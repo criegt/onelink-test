@@ -3,7 +3,7 @@ using OneLinkTest.Domain.Employees;
 
 namespace OneLinkTest.Application.UseCases.Employees.GetEmployees
 {
-    public class GetEmployeesUseCase
+    public class GetEmployeesUseCase : IGetEmployeesUseCase
     {
         private readonly IEmployeeRepository _employeeRepository;
         private IOutputPort _outputPort;
@@ -21,7 +21,7 @@ namespace OneLinkTest.Application.UseCases.Employees.GetEmployees
 
         public async Task Execute(Input input)
         {
-            var employees = await _employeeRepository.GetEmployeesWithSubarea(input.PageIndex, input.PageSize);
+            var employees = await _employeeRepository.GetEmployeesWithSubarea(input.PageIndex, input.PageSize, input.SearchTerms);
             _outputPort.Ok(employees);
         }
     }

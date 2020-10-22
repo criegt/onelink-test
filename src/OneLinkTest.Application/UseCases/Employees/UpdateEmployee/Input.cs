@@ -4,23 +4,16 @@ namespace OneLinkTest.Application.UseCases.Employees.UpdateEmployee
 {
     public class Input
     {
-        public Input(long document, DocumentType documentType, string firstName, string lastName, int subareaId)
-        {
-            Document = document;
-            DocumentType = documentType;
-            FirstName = firstName;
-            LastName = lastName;
-            SubareaId = subareaId;
-        }
+        public long EmployeeId { get; set; }
 
         public long Document { get; set; }
 
         public DocumentType DocumentType { get; set; }
 
-        public string FirstName { get; }
+        public string FirstName { get; set; }
 
-        public string LastName { get; }
+        public string LastName { get; set; }
 
-        public int SubareaId { get; }
+        public int SubareaId { get; set; }
     }
 }

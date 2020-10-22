@@ -1,26 +1,18 @@
-﻿using OneLinkTest.Domain.Employees;
+﻿using System;
+using OneLinkTest.Domain.Employees;
 
 namespace OneLinkTest.Application.UseCases.Employees.AddEmployee
 {
     public class Input
     {
-        public Input(long document, DocumentType documentType, string firstName, string lastName, int subareaId)
-        {
-            Document = document;
-            DocumentType = documentType;
-            FirstName = firstName;
-            LastName = lastName;
-            SubareaId = subareaId;
-        }
-
         public long Document { get; set; }
 
         public DocumentType DocumentType { get; set; }
 
-        public string FirstName { get; }
+        public string FirstName { get; set; }
 
-        public string LastName { get; }
+        public string LastName { get; set; }
 
-        public int SubareaId { get; }
+        public int SubareaId { get; set; }
     }
 }

@@ -2,13 +2,8 @@
 {
     public class Input
     {
-        public Input(int pageIndex, int pageSize)
-        {
-            PageIndex = pageIndex;
-            PageSize = pageSize;
-        }
-
-        public int PageIndex { get; }
-        public int PageSize { get; }
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; }
+        public string SearchTerms { get; set; } = string.Empty;
     }
 }
