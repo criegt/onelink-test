@@ -39,7 +39,7 @@ namespace OneLinkTest.Infrastructure.DataAccess.Repositories
                 .Where(e => e.Document.ToString().Contains(searchTerms.ToLower())
                     || e.FirstName.Contains(searchTerms.ToLower())
                     || e.LastName.Contains(searchTerms.ToLower()))
-                .Skip((pageIndex - 1) * pageSize)
+                .Skip(pageIndex * pageSize)
                 .Take(pageSize)
                 .AsNoTracking()
                 .ToListAsync();
