@@ -5,7 +5,7 @@ namespace OneLinkTest.Application.UseCases.Employees.GetEmployees
 {
     public class GetEmployeesPresenter : IOutputPort
     {
-        public IReadOnlyList<Employee>? Employees { get; private set; }
+        public IReadOnlyList<Employee> Employees { get; private set; }
 
         public void Ok(IReadOnlyList<Employee> employees)
         {

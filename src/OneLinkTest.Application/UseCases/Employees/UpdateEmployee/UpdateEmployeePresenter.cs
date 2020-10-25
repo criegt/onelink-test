@@ -4,7 +4,7 @@ namespace OneLinkTest.Application.UseCases.Employees.UpdateEmployee
 {
     public class UpdateEmployeePresenter : IOutputPort
     {
-        public Employee? Employee { get; private set; }
+        public Employee Employee { get; private set; }
         public bool NotFoundOutput { get; private set; }
         public bool InvalidOutput { get; private set; }
 
