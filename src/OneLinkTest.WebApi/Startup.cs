@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using OneLinkTest.Application.Services;
 using OneLinkTest.Application.UseCases.Areas.GetAreas;
 using OneLinkTest.Application.UseCases.Employees.AddEmployee;
+using OneLinkTest.Application.UseCases.Employees.GetEmployee;
 using OneLinkTest.Application.UseCases.Employees.GetEmployees;
 using OneLinkTest.Application.UseCases.Employees.UpdateEmployee;
 using OneLinkTest.Domain.Areas;
@@ -29,7 +30,15 @@ namespace OneLinkTest.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddCors();
+            services.AddCors(
+                options =>
+                {
+                    options.AddPolicy("AngularClientPolicy",
+                        builder => builder.WithOrigins("http://localhost:4200")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials());
+                });
             services.AddApiVersioning(
                 options =>
                 {
@@ -57,6 +66,8 @@ namespace OneLinkTest.WebApi
 
             services.AddScoped<IGetEmployeesUseCase, GetEmployeesUseCase>();
 
+            services.AddScoped<IGetEmployeeUseCase, GetEmployeeUseCase>();
+
             services.AddScoped<IGetAreasUseCase, GetAreasUseCase>();
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
@@ -70,14 +81,9 @@ namespace OneLinkTest.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
-            app.UseCors(options => options
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            app.UseCors("AngularClientPolicy");
 
             app.UseSwagger();
             app.UseSwaggerUI(

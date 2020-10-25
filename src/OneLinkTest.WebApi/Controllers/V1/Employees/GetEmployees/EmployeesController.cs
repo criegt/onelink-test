@@ -21,7 +21,7 @@ namespace OneLinkTest.WebApi.Controllers.V1.Employees.GetEmployees
         [HttpGet]
         public async Task<IActionResult> Get(
             [FromServices] IGetEmployeesUseCase useCase,
-            [FromQuery] int pageIndex = 1,
+            [FromQuery] int pageIndex = 0,
             [FromQuery] int pageSize = 10,
             [FromQuery] string searchTerms = "")
         {
@@ -31,7 +31,7 @@ namespace OneLinkTest.WebApi.Controllers.V1.Employees.GetEmployees
             {
                 PageIndex = pageIndex,
                 PageSize = pageSize,
-                SearchTerms = searchTerms
+                SearchTerms = searchTerms ?? string.Empty
             });
 
             return _viewModel;
