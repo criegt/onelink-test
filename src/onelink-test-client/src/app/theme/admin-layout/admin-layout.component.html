@@ -1,0 +1,25 @@
+
+<div class="matero-container-wrap matero-navbar-top matero-header-fixed matero-header-white"
+     dir="ltr">
+  <ng-progress></ng-progress>
+
+  <mat-sidenav-container class="matero-container" autosize autoFocus>
+
+    <mat-sidenav #sidenavNotice position="end" mode="over">
+      <app-sidebar-notice></app-sidebar-notice>
+    </mat-sidenav>
+
+    <mat-sidenav-content #content class="matero-content-wrap">
+      <app-header [showToggle]="false"
+                  [showBranding]="true"
+                  (toggleSidenavNotice)="sidenavNotice.toggle()">
+      </app-header>
+
+      <app-topmenu></app-topmenu>
+
+      <div class="matero-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

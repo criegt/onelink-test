@@ -1,0 +1,23 @@
+{
+  "menu": [
+    {
+      "route": "dashboard",
+      "name": "home",
+      "type": "link",
+      "icon": "home"
+    },
+    {
+      "route": "employees",
+      "name": "employees",
+      "type": "link",
+      "icon": "supervisor_account",
+      "children": [
+        {
+          "route": "add",
+          "name": "add",
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}
