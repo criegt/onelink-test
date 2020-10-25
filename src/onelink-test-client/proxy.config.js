@@ -1,21 +1,15 @@
 const PROXY_CONFIG = {
-  '/users/**': {
-    target: 'https://api.github.com',
+  '/employees/**': {
+    target: 'http://localhost:5000/api/v1/',
     changeOrigin: true,
     secure: false,
     logLevel: 'debug',
-    onProxyReq: (proxyReq, req, res) => {
-      // const cookieMap = {
-      //   SID: '',
-      // };
-      // let cookie = '';
-      // for (const key in cookieMap) {
-      //   if (Object.prototype.hasOwnProperty.call(cookieMap, key)) {
-      //     cookie += `${key}=${cookieMap[key]}; `;
-      //   }
-      // }
-      // proxyReq.setHeader('cookie', cookie);
-    },
+  },
+  '/characters/**': {
+    target: 'https://sampleapis.com/futurama/api/',
+    changeOrigin: true,
+    secure: true,
+    logLevel: 'debug',
   },
 };
 

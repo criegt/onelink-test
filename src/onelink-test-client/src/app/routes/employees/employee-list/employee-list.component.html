@@ -1,3 +1,20 @@
 <breadcrumb></breadcrumb>
 
-<p>employee-list works!</p>
+<form>
+  <mat-form-field class="m-r-8">
+    <input matInput [(ngModel)]="query.searchTerms" name="q" placeholder="Search terms">
+  </mat-form-field>
+
+  <button class="m-r-8" mat-raised-button color="primary" (click)="search()">Search</button>
+</form>
+
+<mtx-grid [data]="employees"
+          [columns]="columns"
+          [length]="total"
+          [loading]="isLoading"
+          [pageOnFront]="false"
+          [pageIndex]="query.pageIndex"
+          [pageSize]="query.pageSize"
+          [pageSizeOptions]="[5,10,20]"
+          (page)="nextPage($event)">
+</mtx-grid>

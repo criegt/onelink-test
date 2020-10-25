@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeesEmployeeAddComponent implements OnInit {
 
-  constructor() { }
+  employeeForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.employeeForm = this.formBuilder.group({
+      document: [''],
+      documentType: [''],
+      firstName: [''],
+      lastName: [''],
+    });
+  }
 
   ngOnInit() {
   }
