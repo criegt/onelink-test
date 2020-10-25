@@ -29,6 +29,7 @@ namespace OneLinkTest.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
             services.AddApiVersioning(
                 options =>
                 {
@@ -72,6 +73,11 @@ namespace OneLinkTest.WebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(options => options
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseSwagger();
             app.UseSwaggerUI(
