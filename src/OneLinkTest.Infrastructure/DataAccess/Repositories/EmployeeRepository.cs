@@ -29,7 +29,7 @@ namespace OneLinkTest.Infrastructure.DataAccess.Repositories
         public async Task<Employee> Find(long document, DocumentType documentType)
         {
             return await _context.Employees
-                .FirstOrDefaultAsync(e => e.Document == document 
+                .FirstOrDefaultAsync(e => e.Document == document
                     && e.DocumentType == documentType);
         }
 
