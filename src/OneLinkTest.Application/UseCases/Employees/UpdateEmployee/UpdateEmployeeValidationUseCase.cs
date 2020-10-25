@@ -8,17 +8,14 @@ namespace OneLinkTest.Application.UseCases.Employees.UpdateEmployee
     public class UpdateEmployeeValidationUseCase : IUpdateEmployeeUseCase
     {
         private readonly IUpdateEmployeeUseCase _useCase;
-        private readonly IEmployeeRepository _employeeRepository;
         private readonly Notification _notification;
         private IOutputPort _outputPort;
         private readonly InputValidator _validator;
 
         public UpdateEmployeeValidationUseCase(IUpdateEmployeeUseCase useCase,
-            IEmployeeRepository employeeRepository,
             Notification notification)
         {
             _useCase = useCase;
-            _employeeRepository = employeeRepository;
             _notification = notification;
             _outputPort = new UpdateEmployeePresenter();
             _validator = new InputValidator();
