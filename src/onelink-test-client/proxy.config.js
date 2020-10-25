@@ -1,6 +1,6 @@
 const PROXY_CONFIG = {
-  '/employees/**': {
-    target: 'http://localhost:5000/api/v1/',
+  '/api/**': {
+    target: 'http://localhost:5000/',
     changeOrigin: true,
     secure: false,
     logLevel: 'debug',

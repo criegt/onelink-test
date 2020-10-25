@@ -1,8 +1,10 @@
+import { DOCUMENT_TYPES } from './../../../shared/models/document-type';
 import { EmployeeService } from './../../../shared/services/employee.service';
 import { Employee } from './../../../shared/models/employee';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MtxGridColumn } from '@ng-matero/extensions';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employees-employee-list',
@@ -11,10 +13,25 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class EmployeesEmployeeListComponent implements OnInit {
   columns: MtxGridColumn[] = [
-    { header: 'Document Type', field: 'documentType' },
+    { header: 'Document Type', field: 'documentType', formatter: (data: any) => DOCUMENT_TYPES[data.documentType].name },
     { header: 'Document', field: 'document' },
     { header: 'First Name', field: 'firstName' },
     { header: 'LastName', field: 'lastName' },
+    {
+      header: 'Edit',
+      field: 'employeeId',
+      pinned: 'right',
+      type: 'button',
+      buttons: [
+        {
+          type: 'icon',
+          text: 'edit',
+          icon: 'edit',
+          tooltip: 'Edit',
+          click: record => this.router.navigate([ `employees/${record.employeeId}/edit` ]),
+        },
+      ],
+    },
   ];
   total = 0;
   isLoading = true;
@@ -28,7 +45,8 @@ export class EmployeesEmployeeListComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private changeDetector: ChangeDetectorRef
+    private changeDetector: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -53,5 +71,9 @@ export class EmployeesEmployeeListComponent implements OnInit {
   search() {
     this.query.pageIndex = 0;
     this.loadEmployees();
+  }
+
+  navigateToAdd(){
+    this.router.navigate(['employees/add']);
   }
 }

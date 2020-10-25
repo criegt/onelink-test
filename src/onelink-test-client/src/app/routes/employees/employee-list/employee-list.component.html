@@ -1,12 +1,19 @@
 <breadcrumb></breadcrumb>
 
-<form>
-  <mat-form-field class="m-r-8">
-    <input matInput [(ngModel)]="query.searchTerms" name="q" placeholder="Search terms">
-  </mat-form-field>
+<div fxLayout="row wrap" class="matero-row">
+  <div fxFlex="70" fxFlex.lt-sm="100" class="matero-col">
+    <button class="m-r-8" mat-raised-button color="primary" (click)="navigateToAdd()">Register employee</button>
+  </div>
+  <div fxFlex="30" fxFlex.lt-sm="100" class="matero-col">
+    <form>
+      <mat-form-field class="m-r-8">
+        <input matInput [(ngModel)]="query.searchTerms" name="q" placeholder="Search terms">
+      </mat-form-field>
 
-  <button class="m-r-8" mat-raised-button color="primary" (click)="search()">Search</button>
-</form>
+      <button class="m-r-8" mat-raised-button color="primary" (click)="search()">Search</button>
+    </form>
+  </div>
+</div>
 
 <mtx-grid [data]="employees"
           [columns]="columns"

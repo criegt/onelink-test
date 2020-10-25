@@ -11,6 +11,18 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   getEmployees(params = {}): Promise<Employee[]> {
-    return this.http.get<Employee[]>('employees', { params }).toPromise();
+    return this.http.get<Employee[]>('api/v1/employees', { params }).toPromise();
+  }
+
+  getEmployee(employeeId: number): Promise<Employee> {
+    return this.http.get<Employee>(`api/v1/employees/${employeeId}`).toPromise();
+  }
+
+  updateEmployees(employeeId: number, employee: Employee): Promise<any> {
+    return this.http.put(`api/v1/employees/${employeeId}`, employee).toPromise();
+  }
+
+  addEmployees(employee: Employee): Promise<any> {
+    return this.http.post('api/v1/employees', employee).toPromise();
   }
 }
