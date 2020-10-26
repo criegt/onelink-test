@@ -1,40 +1,43 @@
 ﻿using System.Threading.Tasks;
 using NUnit.Framework;
-using OneLinkTest.Application.UseCases.Employees.GetEmployees;
+using OneLinkTest.Application.UseCases.Employees.UpdateEmployee;
 using OneLinkTest.Domain.Employees;
 using OneLinkTest.Infrastructure.DataAccess;
 using OneLinkTest.Infrastructure.DataAccess.Repositories;
 
-namespace UnitTests.Employees.GetEmployees
+namespace UnitTests.Employees.UpdateEmployee
 {
-    public class GetEmployeesTests
+    public class UpdateEmployeeTests
     {
         private IEmployeeRepository _repository;
-        private IGetEmployeesUseCase _useCase;
+        private IUpdateEmployeeUseCase _useCase;
 
         [SetUp]
         public void Setup()
         {
             _repository = new EmployeeRepositoryFake(new OneLinkTestContextFake());
-            _useCase = new GetEmployeesUseCase(_repository);
+            _useCase = new UpdateEmployeeUseCase(_repository);
         }
 
         [Test]
         public async Task Should_ReturnNotNull()
         {
-            var presenter = new GetEmployeesPresenter();
+            var presenter = new UpdateEmployeePresenter();
             var input = new Input
             {
-                PageIndex = 0,
-                PageSize = 10,
-                SearchTerms = string.Empty
+                EmployeeId = 1,
+                Document = 1040049214,
+                DocumentType = DocumentType.CitizenshipCard,
+                FirstName = "Cristian",
+                LastName = "García Ocampo",
+                SubareaId = 2
             };
 
             _useCase.SetOutputPort(presenter);
 
             await _useCase.Execute(input);
 
-            Assert.IsNotNull(presenter.Employees);
+            Assert.IsNotNull(presenter.Employee);
         }
     }
 }
