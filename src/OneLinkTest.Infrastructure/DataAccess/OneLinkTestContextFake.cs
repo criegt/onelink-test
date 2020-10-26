@@ -38,6 +38,18 @@ namespace OneLinkTest.Infrastructure.DataAccess
             };
 
             Areas.Add(area);
+
+            var employee = new Employee
+            {
+                EmployeeId = 1,
+                Document = 1040049214,
+                DocumentType = DocumentType.CitizenshipCard,
+                FirstName = "Cristian",
+                LastName = "García",
+                SubareaId = 1,
+            };
+
+            Employees.Add(employee);
         }
 
         public ICollection<Employee> Employees { get; } = new Collection<Employee>();
