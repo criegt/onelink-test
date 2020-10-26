@@ -1,9 +1,9 @@
 export interface Employee {
-  employeeId: number;
+  employeeId?: number;
   documentType: number;
   document: number;
   firstName: string;
   lastName: string;
-  subareaId: number;
+  subareaId?: number;
   subarea?: object;
 }

@@ -13,10 +13,10 @@ import { Router } from '@angular/router';
 })
 export class EmployeesEmployeeListComponent implements OnInit {
   columns: MtxGridColumn[] = [
-    { header: 'Document Type', field: 'documentType', formatter: (data: any) => DOCUMENT_TYPES[data.documentType].name },
+    { header: 'Document type', field: 'documentType', formatter: (data: any) => DOCUMENT_TYPES[data.documentType].name },
     { header: 'Document', field: 'document' },
-    { header: 'First Name', field: 'firstName' },
-    { header: 'LastName', field: 'lastName' },
+    { header: 'First name', field: 'firstName' },
+    { header: 'Last name', field: 'lastName' },
     {
       header: 'Edit',
       field: 'employeeId',
@@ -33,7 +33,7 @@ export class EmployeesEmployeeListComponent implements OnInit {
       ],
     },
   ];
-  total = 0;
+  total = 20;
   isLoading = true;
   query = {
     searchTerms: '',
@@ -56,7 +56,8 @@ export class EmployeesEmployeeListComponent implements OnInit {
   loadEmployees() {
     this.isLoading = true;
     this.employeeService.getEmployees(this.query).then(e => {
-      this.employees = e;
+      this.employees = e.employees;
+      this.total = e.totalCount;
       this.isLoading = false;
       this.changeDetector.detectChanges();
     }).catch(r => console.log(r));

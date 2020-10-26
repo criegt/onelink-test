@@ -16,6 +16,11 @@
           "route": "add",
           "name": "add",
           "type": "link"
+        },
+        {
+          "route": "edit",
+          "name": "edit",
+          "type": "link"
         }
       ]
     }
