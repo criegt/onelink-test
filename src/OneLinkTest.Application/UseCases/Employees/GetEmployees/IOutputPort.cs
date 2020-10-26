@@ -5,6 +5,6 @@ namespace OneLinkTest.Application.UseCases.Employees.GetEmployees
 {
     public interface IOutputPort
     {
-        void Ok(IReadOnlyList<Employee> employees);
+        void Ok(int totalCount, IReadOnlyList<Employee> employees);
     }
 }

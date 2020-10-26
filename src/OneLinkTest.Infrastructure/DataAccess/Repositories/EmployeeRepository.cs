@@ -33,16 +33,18 @@ namespace OneLinkTest.Infrastructure.DataAccess.Repositories
                     && e.DocumentType == documentType);
         }
 
-        public async Task<IReadOnlyList<Employee>> GetEmployeesWithSubarea(int pageIndex, int pageSize, string searchTerms)
+        public async Task<(int, IReadOnlyList<Employee>)> GetEmployeesWithSubarea(int pageIndex, int pageSize, string searchTerms)
         {
-            return await _context.Employees
+            var query = _context.Employees
                 .Where(e => e.Document.ToString().Contains(searchTerms.ToLower())
                     || e.FirstName.Contains(searchTerms.ToLower())
-                    || e.LastName.Contains(searchTerms.ToLower()))
-                .Skip(pageIndex * pageSize)
+                    || e.LastName.Contains(searchTerms.ToLower()));
+            var count = await query.CountAsync();
+
+            return (count, await query.Skip(pageIndex * pageSize)
                 .Take(pageSize)
                 .AsNoTracking()
-                .ToListAsync();
+                .ToListAsync());
         }
 
         public async Task Remove(Employee employee)

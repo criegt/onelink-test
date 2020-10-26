@@ -21,8 +21,8 @@ namespace OneLinkTest.Application.UseCases.Employees.GetEmployees
 
         public async Task Execute(Input input)
         {
-            var employees = await _employeeRepository.GetEmployeesWithSubarea(input.PageIndex, input.PageSize, input.SearchTerms);
-            _outputPort.Ok(employees);
+            var (count, employees) = await _employeeRepository.GetEmployeesWithSubarea(input.PageIndex, input.PageSize, input.SearchTerms);
+            _outputPort.Ok(count, employees);
         }
     }
 }

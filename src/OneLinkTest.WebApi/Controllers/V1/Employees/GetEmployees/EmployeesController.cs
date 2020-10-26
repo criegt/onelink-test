@@ -13,9 +13,9 @@ namespace OneLinkTest.WebApi.Controllers.V1.Employees.GetEmployees
     {
         private IActionResult _viewModel;
 
-        void IOutputPort.Ok(IReadOnlyList<Employee> employees)
+        void IOutputPort.Ok(int totalCount, IReadOnlyList<Employee> employees)
         {
-            _viewModel = Ok(employees);
+            _viewModel = Ok(new { TotalCount = totalCount, Employees = employees });
         }
 
         [HttpGet]
