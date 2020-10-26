@@ -1,20 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using OneLinkTest.Application.Services;
-using OneLinkTest.Application.UseCases.Areas.GetAreas;
-using OneLinkTest.Application.UseCases.Employees.AddEmployee;
-using OneLinkTest.Application.UseCases.Employees.GetEmployee;
-using OneLinkTest.Application.UseCases.Employees.GetEmployees;
-using OneLinkTest.Application.UseCases.Employees.UpdateEmployee;
-using OneLinkTest.Domain.Areas;
-using OneLinkTest.Domain.Employees;
-using OneLinkTest.Infrastructure.DataAccess;
-using OneLinkTest.Infrastructure.DataAccess.Repositories;
 using OneLinkTest.WebApi.Modules;
 
 namespace OneLinkTest.WebApi
