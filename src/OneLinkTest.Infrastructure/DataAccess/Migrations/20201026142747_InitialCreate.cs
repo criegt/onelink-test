@@ -65,12 +65,39 @@ namespace OneLinkTest.Infrastructure.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "Areas",
                 columns: new[] { "AreaId", "Name" },
-                values: new object[] { 1, "Area1" });
+                values: new object[] { 1, "Comercialización" });
+
+            migrationBuilder.InsertData(
+                table: "Areas",
+                columns: new[] { "AreaId", "Name" },
+                values: new object[] { 2, "Administración" });
+
+            migrationBuilder.InsertData(
+                table: "Areas",
+                columns: new[] { "AreaId", "Name" },
+                values: new object[] { 3, "Administración del Personal" });
 
             migrationBuilder.InsertData(
                 table: "Subareas",
                 columns: new[] { "SubareaId", "AreaId", "Name" },
-                values: new object[] { 1, 1, "Subarea1" });
+                values: new object[,]
+                {
+                    { 1, 1, "Investigación de mercado" },
+                    { 2, 1, "Publicidad" },
+                    { 3, 1, "Promoción" },
+                    { 4, 1, "Ventas" },
+                    { 5, 1, "Distribución" },
+                    { 6, 2, "Finanzas" },
+                    { 7, 2, "Control" },
+                    { 8, 3, "Selección y distribución" },
+                    { 9, 3, "Relaciones Industriales" },
+                    { 10, 3, "Servicios Sociales" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Employees",
+                columns: new[] { "EmployeeId", "Document", "DocumentType", "FirstName", "LastName", "SubareaId" },
+                values: new object[] { 1L, 1040049214L, 1, "Cristian", "García", 7 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_SubareaId",

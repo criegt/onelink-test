@@ -9,7 +9,7 @@ using OneLinkTest.Infrastructure.DataAccess;
 namespace OneLinkTest.Infrastructure.DataAccess.Migrations
 {
     [DbContext(typeof(OneLinkTestContext))]
-    [Migration("20201021231228_InitialCreate")]
+    [Migration("20201026142747_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,7 +38,17 @@ namespace OneLinkTest.Infrastructure.DataAccess.Migrations
                         new
                         {
                             AreaId = 1,
-                            Name = "Area1"
+                            Name = "Comercialización"
+                        },
+                        new
+                        {
+                            AreaId = 2,
+                            Name = "Administración"
+                        },
+                        new
+                        {
+                            AreaId = 3,
+                            Name = "Administración del Personal"
                         });
                 });
 
@@ -66,7 +76,61 @@ namespace OneLinkTest.Infrastructure.DataAccess.Migrations
                         {
                             SubareaId = 1,
                             AreaId = 1,
-                            Name = "Subarea1"
+                            Name = "Investigación de mercado"
+                        },
+                        new
+                        {
+                            SubareaId = 2,
+                            AreaId = 1,
+                            Name = "Publicidad"
+                        },
+                        new
+                        {
+                            SubareaId = 3,
+                            AreaId = 1,
+                            Name = "Promoción"
+                        },
+                        new
+                        {
+                            SubareaId = 4,
+                            AreaId = 1,
+                            Name = "Ventas"
+                        },
+                        new
+                        {
+                            SubareaId = 5,
+                            AreaId = 1,
+                            Name = "Distribución"
+                        },
+                        new
+                        {
+                            SubareaId = 6,
+                            AreaId = 2,
+                            Name = "Finanzas"
+                        },
+                        new
+                        {
+                            SubareaId = 7,
+                            AreaId = 2,
+                            Name = "Control"
+                        },
+                        new
+                        {
+                            SubareaId = 8,
+                            AreaId = 3,
+                            Name = "Selección y distribución"
+                        },
+                        new
+                        {
+                            SubareaId = 9,
+                            AreaId = 3,
+                            Name = "Relaciones Industriales"
+                        },
+                        new
+                        {
+                            SubareaId = 10,
+                            AreaId = 3,
+                            Name = "Servicios Sociales"
                         });
                 });
 
@@ -97,6 +161,17 @@ namespace OneLinkTest.Infrastructure.DataAccess.Migrations
                     b.HasIndex("SubareaId");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            EmployeeId = 1L,
+                            Document = 1040049214L,
+                            DocumentType = 1,
+                            FirstName = "Cristian",
+                            LastName = "García",
+                            SubareaId = 7
+                        });
                 });
 
             modelBuilder.Entity("OneLinkTest.Domain.Areas.Subareas.Subarea", b =>
